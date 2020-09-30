@@ -10,7 +10,13 @@ export default function useProductList(router, products, pageSize) {
     pageNumber: 1,
   })
 
-  watch(state.filterName, (newValue, oldValue) => {
+  watch(() => state.filterName, (newValue, oldValue) => {
+    state.pageNumber = 1;
+  })
+  watch(() => state.sortName, (newValue, oldValue) => {
+    state.pageNumber = 1;
+  })
+  watch(() => state.sortDir, (newValue, oldValue) => {
     state.pageNumber = 1;
   })
 
