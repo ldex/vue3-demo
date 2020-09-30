@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Vue Store</h1>
+    <h1>Vue 3 Store</h1>
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/products">Products</router-link>

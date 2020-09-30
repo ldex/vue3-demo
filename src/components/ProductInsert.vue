@@ -46,7 +46,24 @@
         number
       >
     </div>
-    <button type="submit" class="btn btn-primary">Save product</button>
+            <div class="form-group">
+            <label for="discontinued">Discontinued?</label>
+            <input type="checkbox" v-model="product.discontinued" 
+                class="form-control"
+                id="discontinued">
+        </div>
+
+        <div class="form-group">
+            <label for="fixedPrice">Fixed price?</label>
+            <input type="checkbox" v-model="product.fixedPrice" 
+                class="form-control"
+                id="fixedPrice">
+        </div>
+      <div style="margin: 10px">
+        <button type="submit">Save product</button>
+      </div>
+
+      <img :src="product.imageUrl" width="200" />
   </form>
 </template>
 
@@ -68,7 +85,6 @@ export default {
           description: this.product.description
         };
         console.log(newProduct);
-        //ProductService.insertProduct(newProduct)
         this.$store.dispatch('addProduct', newProduct)
         .then(response => {
           this.$router.push({ name: 'products'});
@@ -87,6 +103,21 @@ export default {
 </script>
 
 <style lang="css" scoped>
+input:active, 
+input:focus, 
+input:hover, 
+textarea:active, 
+textarea:focus, 
+textarea:hover { 
+  background-color: lightyellow; 
+  border-color: yellow; 
+} 
+
+label {
+    clear: both;
+    float:left;
+    width: 120px;
+}
 .errorMessage {
   color: red;
 }

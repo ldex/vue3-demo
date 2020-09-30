@@ -7,11 +7,11 @@ export default function useProductList(router, products, pageSize) {
     filterName: '',
     sortName: 'modifiedDate',
     sortDir: 'desc',
-    pageNumber: 0,
+    pageNumber: 1,
   })
 
   watch(state.filterName, (newValue, oldValue) => {
-    state.pageNumber = 0;
+    state.pageNumber = 1;
   })
 
   const sort = (s) => {
@@ -55,7 +55,7 @@ export default function useProductList(router, products, pageSize) {
     })
   })
   const sortedFilteredPaginatedProducts = computed(() => {
-    const start = state.pageNumber * pageSize,
+    const start = (state.pageNumber-1) * pageSize,
           end = start + pageSize;
 
     return sortedFilteredProducts.value.slice(start, end);
